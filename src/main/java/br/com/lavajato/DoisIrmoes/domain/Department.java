@@ -1,4 +1,5 @@
 package br.com.lavajato.DoisIrmoes.domain;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,6 +18,7 @@ public class Department {
     private Integer id;
     private String name;
     private String cod;
+
     @ManyToMany
     private List<User> users;
 
@@ -24,7 +26,5 @@ public class Department {
 
         this.users.add(user);
     }
-
-
 
 }

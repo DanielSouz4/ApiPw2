@@ -20,4 +20,9 @@ public class DepartmentService {
         return departmentRepository.findAll();
     }
 
+    public void deleteDepartment(Integer departmentId) {
+        Department department = departmentRepository.findById(departmentId).orElse(new Department());
+        departmentRepository.delete(department);
+    }
+
 }

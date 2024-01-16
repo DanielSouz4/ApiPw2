@@ -39,17 +39,7 @@ public class DepartmentController {
         department.userSave(user);
         return new ResponseEntity<>(departmentRepository.save(department), HttpStatus.OK);
     }
-//    @GetMapping("/get/{departmentId}")
-//    public ResponseEntity<Department> getDepartment(@PathVariable Integer departmentId) {
-//        Department department = departmentRepository.getDepartment(departmentId);
-//        return new ResponseEntity<>(department, HttpStatus.OK);
-//    }
-//
-//    @GetMapping("/{departmentId}/get-all/{departmentId}")
-//    public ResponseEntity<List<departmentRepository>> getAllUsers() {
-//        List<Department> departments = departmentRepository.findAll().get();
-//        return new ResponseEntity<>(departmentsRepository, HttpStatus.OK);
-//    }
+
 @GetMapping("/get/{departmentId}")
 public ResponseEntity<Department> getDepartment(@PathVariable Integer departmentId) {
     Department department = departmentService.getDepartment(departmentId);
@@ -60,10 +50,15 @@ public ResponseEntity<Department> getDepartment(@PathVariable Integer department
         List<Department> departments = departmentService.getAll();
         return new ResponseEntity<>(departments, HttpStatus.OK);
     }
-    @DeleteMapping("/delete/{deaprtmentId}")
-    public void deleteDepartment(Integer departmentId) {
-        Department department = departmentRepository.findById(departmentId).orElse(new Department());
-        departmentRepository.delete(department);
+    //@DeleteMapping("/delete/{departmentId}")
+//    public void deleteDepartment(Integer departmentId) {
+//        Department department = departmentRepository.findById(departmentId).orElse(new Department());
+//        departmentRepository.delete(department);
+//    }
+    @DeleteMapping("/delete/{departmentId}")
+    public ResponseEntity deleteDepartment(@PathVariable Integer departmentId) {
+        departmentService.deleteDepartment(departmentId);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 
